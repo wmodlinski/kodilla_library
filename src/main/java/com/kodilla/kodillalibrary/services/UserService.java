@@ -27,10 +27,9 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public UserDto getUserById(Long id) throws UserNotFoundException {
+    public User getUserById(Long userId) throws UserNotFoundException {
 
-        User user = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
-        return mapToDto(user);
+        return userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
     }
 
     public UserDto createUser(UserDto userDto) {
@@ -40,17 +39,17 @@ public class UserService {
     }
 
     public UserDto updateUser(UserDto userDto) throws UserNotFoundException {
-        if(!userRepository.existsById(userDto.getId()))
+        if(!userRepository.existsById(userDto.getUserId()))
             throw new UserNotFoundException();
 
         User savedUser = userRepository.save(mapToUser(userDto));
         return mapToDto(savedUser);
     }
 
-    public void deleteUser(Long id) throws UserNotFoundException {
-        if(!userRepository.existsById(id))
+    public void deleteUser(Long userId) throws UserNotFoundException {
+        if(!userRepository.existsById(userId))
             throw new UserNotFoundException();
 
-        userRepository.deleteById(id);
+        userRepository.deleteById(userId);
     }
 }

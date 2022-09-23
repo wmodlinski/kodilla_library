@@ -22,7 +22,7 @@ public class User {
     @Id
     @GeneratedValue
     @Column(name = "USER_ID", unique = true)
-    private Long id;
+    private Long userId;
 
     @Column(name = "USER_FIRST_NAME")
     private String firstName;

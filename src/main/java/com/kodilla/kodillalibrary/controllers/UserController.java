@@ -1,5 +1,6 @@
 package com.kodilla.kodillalibrary.controllers;
 
+import com.kodilla.kodillalibrary.domain.User;
 import com.kodilla.kodillalibrary.domain.UserDto;
 import com.kodilla.kodillalibrary.exceptions.UserNotFoundException;
 import com.kodilla.kodillalibrary.services.UserService;
@@ -23,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping(value = "{userId}")
-    public ResponseEntity<UserDto> getUserById(@PathVariable long userId) throws UserNotFoundException {
+    public ResponseEntity<User> getUserById(@PathVariable long userId) throws UserNotFoundException {
         return ResponseEntity.ok(userService.getUserById(userId));
     }
 
@@ -39,7 +40,7 @@ public class UserController {
 
     @DeleteMapping(value = "{userId}")
     public ResponseEntity<UserDto> deleteUser(@PathVariable UserDto userDto) throws UserNotFoundException{
-        userService.deleteUser(userDto.getId());
+        userService.deleteUser(userDto.getUserId());
         return ResponseEntity.ok().build();
     }
 }
