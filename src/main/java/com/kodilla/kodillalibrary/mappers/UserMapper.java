@@ -2,7 +2,9 @@ package com.kodilla.kodillalibrary.mappers;
 
 import com.kodilla.kodillalibrary.domain.User;
 import com.kodilla.kodillalibrary.domain.UserDto;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserMapper {
 
     public static UserDto mapToDto(User user){
