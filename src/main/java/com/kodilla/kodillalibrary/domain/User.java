@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
-@Builder
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -22,7 +22,7 @@ public class User {
     @Id
     @GeneratedValue
     @Column(name = "USER_ID", unique = true)
-    private Long userId;
+    private long userId;
 
     @Column(name = "USER_FIRST_NAME")
     private String firstName;

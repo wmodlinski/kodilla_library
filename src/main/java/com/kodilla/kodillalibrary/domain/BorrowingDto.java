@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class BorrowingDto {
 
     private long id;
-    private CopyOfBook copyOfBook;
+    private Copy copy;
     private User user;
     private LocalDate loadDate;
     private LocalDate returnDate;
