@@ -18,12 +18,22 @@ public class GlobalHttpErrorHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(CopyNotFoundException.class)
-    public ResponseEntity<Object> handleBookNotFoundException(CopyNotFoundException exception){
+    public ResponseEntity<Object> handleCopyNotFoundException(CopyNotFoundException exception){
         return new ResponseEntity<>("Copy of book with given id not exist", HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(IllegalBookStatusException.class)
     public ResponseEntity<Object> handleIllegalBookStatusException(IllegalBookStatusException exception){
         return new ResponseEntity<>("User provided illegal book status", HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(BorrowNotFoundException.class)
+    public ResponseEntity<Object> handleBorrowingNotFoundException(BorrowNotFoundException exception){
+        return new ResponseEntity<>("Borrowing with given id not exist", HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(CopyUnavailableException.class)
+    public ResponseEntity<Object> handleCopyUnavailableException(CopyUnavailableException exception){
+        return new ResponseEntity<>("Provided book is unavailable to let at this moment", HttpStatus.BAD_REQUEST);
     }
 }
